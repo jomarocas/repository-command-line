@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateRepositoryDto } from './dto/create-repository.dto';
 import { UpdateRepositoryDto } from './dto/update-repository.dto';
+const readline = require('readline');
 
 @Injectable()
 export class RepositoryService {
@@ -23,4 +24,19 @@ export class RepositoryService {
   remove(id: number) {
     return `This action removes a #${id} repository`;
   }
+
+  commandline() {
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+    });
+
+    rl.question(`What's your name?`, async name => {
+      const answer = await rl.question('What do you think of Node.js? ');
+      console.log(`Thank you for your valuable feedback: ${answer}`);
+    });
+  }
+
+
+
 }
