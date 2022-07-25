@@ -1,7 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from 'typeorm';
 
 @Entity()
-export class Repository {
+export class Repository extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -10,13 +10,10 @@ export class Repository {
 
     @Column()
     idDependency: JSON;
-
-    @Column({ default: true })
-    isActive: boolean;
 }
 
 @Entity()
-export class Dependency {
+export class Dependency extends BaseEntity {
     @PrimaryGeneratedColumn()
     idDependency: number;
 

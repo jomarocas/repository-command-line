@@ -1,34 +1,20 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { RepositoryService } from './repository.service';
 import { CreateRepositoryDto } from './dto/create-repository.dto';
 import { UpdateRepositoryDto } from './dto/update-repository.dto';
 
 @Controller('repository')
 export class RepositoryController {
-  constructor(private readonly repositoryService: RepositoryService) {}
-
-  @Post()
-  create(@Body() createRepositoryDto: CreateRepositoryDto) {
-    return this.repositoryService.create(createRepositoryDto);
-  }
+  constructor(private readonly repositoryService: RepositoryService) { }
 
   @Get()
-  findAll() {
-    return this.repositoryService.findAll();
+  getWorking(): string {
+    return this.repositoryService.getWorking();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.repositoryService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateRepositoryDto: UpdateRepositoryDto) {
-    return this.repositoryService.update(+id, updateRepositoryDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.repositoryService.remove(+id);
+  async returnRepository(url: string, branch: string, commit: string): Promise<void> {
+    console.log(`Name: ${url} ${branch} ${commit}`);
+    //return this.repositoryService.returnRepository(url, branch, commit);
+    //return 'Working good';
   }
 }

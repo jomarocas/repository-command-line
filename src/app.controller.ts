@@ -1,12 +1,18 @@
 import { Controller, Get } from '@nestjs/common';
+import { Any } from 'typeorm';
 import { AppService } from './app.service';
+import { RepositoryCommand } from './repository/repository.command';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
-
+  repositoryCommand = new RepositoryCommand()
+  constructor() { }
   @Get()
   getHello(): string {
-    return this.appService.getHello();
+    return this.getHello();
+  }
+
+  getCommand(): void {
+    this.repositoryCommand.createCommand()
   }
 }
