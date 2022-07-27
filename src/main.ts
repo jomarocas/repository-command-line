@@ -2,15 +2,14 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { Inject, Injectable } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { RepositoryController } from './repository/repository.controller';
 import { RepositoryCommand } from './repository/repository.command';
 import { AppController } from './app.controller';
 
 async function bootstrap() {
-  //await CommandFactory.run(AppModule);
-  /*const app = new AppController()
-  app.getCommand();*/
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.createApplicationContext(AppModule);
+  const command: RepositoryCommand = await app.select<AppModule>(AppModule).get(RepositoryCommand);
+  command.createCommand();
+  //const app = await NestFactory.create(AppModule);
 }
 /*async function bootstrap() {
   //constructor(private authService: AuthService) {}
@@ -27,3 +26,4 @@ async function bootstrap() {
   await app.listen(3000);
 }*/
 bootstrap();
+

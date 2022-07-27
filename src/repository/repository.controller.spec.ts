@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { RepositoryController } from './repository.controller';
 import { RepositoryService } from './repository.service';
 
-describe('RepositoryController', () => {
+/*describe('RepositoryController', () => {
   let controller: RepositoryController;
 
   beforeEach(async () => {
@@ -17,4 +17,4 @@ describe('RepositoryController', () => {
   it('should be defined', () => {
     expect(controller).toBeDefined();
   });
-});
+});*/

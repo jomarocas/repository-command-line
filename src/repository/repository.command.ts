@@ -4,7 +4,7 @@
   variadicArg, version,
   Command
 } from 'commander-ts';*/
-import { Inject, Injectable, UseInterceptors } from '@nestjs/common';
+import { Inject, Injectable, Optional, UseInterceptors } from '@nestjs/common';
 import { RepositoryController } from './repository.controller';
 import { RepositoryService } from './repository.service';
 import { Command } from 'commander';
@@ -44,8 +44,9 @@ const p = new RepositoryCommand();*/
 
 @Injectable()
 export class RepositoryCommand {
-  private readonly repositoryService = new RepositoryService
-  constructor() { }
+  //private readonly repositoryService = new RepositoryService()
+  constructor(private readonly repositoryService: RepositoryService) {
+  }
   createCommand(): void {
     program
       .name('repository')

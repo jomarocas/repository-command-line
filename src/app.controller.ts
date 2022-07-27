@@ -5,14 +5,9 @@ import { RepositoryCommand } from './repository/repository.command';
 
 @Controller()
 export class AppController {
-  repositoryCommand = new RepositoryCommand()
   constructor() { }
   @Get()
   getHello(): string {
-    return this.getHello();
-  }
-
-  getCommand(): void {
-    this.repositoryCommand.createCommand()
+    return 'Hello World!';
   }
 }

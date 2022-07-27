@@ -1,9 +1,8 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { RepositoryModule } from './repository/repository.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
+import { RepositoryService } from './repository/repository.service';
 
 @Module({
   imports: [RepositoryModule,
@@ -15,7 +14,8 @@ import { join } from 'path';
       password: '93011619680',
       database: 'repository',
       entities: [join(__dirname, '**', '*.entity.{ts,js}')],
-      synchronize: false,
+      autoLoadEntities: true,
+      synchronize: true,
     }),
   ],
 })
